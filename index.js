@@ -29,13 +29,14 @@ async function run() {
     console.log("connected");
     app.get("/places", async (req, res) => {
       const result = await tourCollection.find({}).toArray();
-      console.log("connected");
+      console.log();
 
       res.send(result);
     });
 
     // post booking information
     app.post("/booking-information", async (req, res) => {
+      console.log(req.body);
       bookingCollection.insertOne(req.body).then((result) => {
         res.send(result.insertedId);
       });
